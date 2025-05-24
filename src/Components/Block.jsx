@@ -1,10 +1,16 @@
-export default function Block(position, onClick) {
+export default function Block({ position, onClick, onRemove}) {
     return(
         <mesh
             position={position}
             onClick={(e) => {
                 e.stopPropagation();
-                onClick(position)
+                onClick(position);
+            }}
+            onContextMenu={(e) => {
+                // e.preventDefault();
+                // set selectedBlock(position)
+                e.stopPropagation();
+                onRemove(position);
             }}
             castShadow
             receiveShadow
